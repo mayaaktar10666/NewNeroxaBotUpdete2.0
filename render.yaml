@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: premium-earn-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python earnbot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: DB_PATH
+        value: /data/earnbot.db
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
